@@ -1134,11 +1134,18 @@ public class Main extends javax.swing.JFrame {
         try {
             cam.crearFileCampo(file);
             metadata=cam.leerMetadata();
-            System.out.println(metadata);
+            cam.leerNumRegistros();
             cam.leerNumCampos();
+            System.out.println(cam.tamCampo);
+            System.out.println(cam.tamRegistro);
             campos=cam.leerCampos();
-            for (int i = 0; i < campos.size(); i++) {
-                System.out.println(campos.get(i).getNombre());
+            registros=cam.leerRegistros();
+            
+            for (int i = 0; i < registros.size(); i++) {
+                System.out.println("Registro #"+i);
+                for (int j = 0; j < campos.size(); j++) {
+                    System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j));
+                }
             }
             /*
             String acum = "";
@@ -1431,6 +1438,7 @@ public class Main extends javax.swing.JFrame {
 
             cam.crearFileCampo(archive);
             cam.escribirCampos(campos, metadata);
+            cam.escribirNumRegistros(registros);
             cam.escribirRegistro(registros);
             JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
             /*for (int i = 0; i < campos.size(); i++) {

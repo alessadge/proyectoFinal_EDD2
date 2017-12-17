@@ -11,8 +11,8 @@ public class AccesoCampo {
     private static RandomAccessFile flujo;
     private static int numeroRegistros;
     private static int tamanoRegistro = 80;
-    private static int tamCampo;
-    private static int tamRegistro;
+    int tamCampo;
+    int tamRegistro;
     private static ArrayList<String> nombresCampos = new ArrayList();
     
     public void crearFileCampo(File archivo) throws IOException {
@@ -55,7 +55,8 @@ public class AccesoCampo {
         numeroRegistros++;
         flujo.seek(numeroRegistros*tamanoRegistro);
         int numerodeCampos = campos.size();
-        flujo.writeInt(numerodeCampos);
+        String temp = ""+numerodeCampos;
+        flujo.writeUTF(temp);
         numeroRegistros++;
         for (int i = 0; i < campos.size(); i++) {
             anadirCampo(campos.get(i));
@@ -75,6 +76,7 @@ public class AccesoCampo {
             for (int j = 0; j < registro.get(i).getCampos().size(); j++) {
                 if (setCampoRegistro(numeroRegistros, registro.get(i).getCampos().get(j))){
                     numeroRegistros++;
+                    tamRegistro++;
                 }
             }
         }
@@ -82,43 +84,59 @@ public class AccesoCampo {
      
     public String leerMetadata() throws IOException{
         flujo.seek(0);
-        //numeroRegistros++;
+        numeroRegistros++;
         return flujo.readUTF();
+    }
+    public void leerNumRegistros() throws IOException{
+        int temp = 0;
+        flujo.seek(2*tamanoRegistro);
+        temp=flujo.readInt();
+        numeroRegistros++;
+        tamRegistro = temp;
+    }
+    public void escribirNumRegistros(ArrayList<Registro>registros) throws IOException{
+        flujo.seek(numeroRegistros*tamanoRegistro);
+        int numerodeRegistros = registros.size();
+        String temp = "" +numerodeRegistros;
+        flujo.writeUTF(temp);
+        numeroRegistros++;
     }
     
     public void leerNumCampos() throws IOException{
         int temp = 0;
         flujo.seek(1*tamanoRegistro);
         temp=flujo.readInt();
-        //numeroRegistros++;
+        numeroRegistros++;
         tamCampo = temp;
     }
     
     public ArrayList<Campo> leerCampos() throws IOException{
         ArrayList<Campo> temporal = new ArrayList();
         
-        for (int i = 2; i < tamCampo+2; i++) {
+        for (int i = 3; i < tamCampo+3; i++) {
             Campo campo = new Campo();
             campo = getCampo(i);
             temporal.add(campo);
-            //numeroRegistros++;
+            numeroRegistros++;
             nombresCampos.add(campo.getNombre());
         }
         return temporal;
     }
-    
-    
-    
-    
+
     public ArrayList<Registro> leerRegistros() throws IOException{
         ArrayList<Registro> temporal = new ArrayList();
-        Registro registro = null;
-        registro.setCampos(new ArrayList());
+        ArrayList<Campo> nada = new ArrayList();
+        Registro registro = new Registro();
+        registro.setCampos(nada);
         int acum=0;
+        System.out.println("1");
         for (int i = 0; i < tamRegistro; i++) {
             registro = new Registro();
+            nada = new ArrayList();
+            registro.setCampos(nada);
+            System.out.println("1");
             for (int j = 0; j < tamCampo; j++) {
-                registro.getCampos().add(getCampo(acum+tamCampo+1+1));
+                registro.getCampos().add(getCampo(acum+tamCampo+3));
                 registro.getCampos().get(j).setNombre(nombresCampos.get(j));
                 acum++;
                 temporal.add(registro);
@@ -126,13 +144,14 @@ public class AccesoCampo {
         }
         return temporal;
     }
+    
     public  Registro devolverRegistro(int x) throws IOException{
         Registro registro=null;
         registro.setCampos(new ArrayList());
         if (tamCampo == 0) {
             System.out.println("Tiene que cargar primero");
         }else{
-            int posicion = tamCampo+2+x;
+            int posicion = tamCampo+3+x;
             flujo.seek(posicion);
             for (int i = 0; i < tamCampo; i++) {
                 registro.getCampos().add(getCampo(posicion));
@@ -147,7 +166,7 @@ public class AccesoCampo {
         if (tamCampo == 0) {
             System.out.println("Tiene que cargar primero");
         }else{
-            int posicion = tamCampo+2+x;
+            int posicion = tamCampo+3+x;
             flujo.seek(posicion);
             for (int i = 0; i < tamCampo; i++) {
                 for (int j = 0; j < tamanoRegistro; j++) {
@@ -160,7 +179,7 @@ public class AccesoCampo {
         }
     }
     
-    public static ArrayList<Registro> devolverRegistros(int x, int y) throws IOException{
+    public ArrayList<Registro> devolverRegistros(int x, int y) throws IOException{
         ArrayList<Registro> temporal = new ArrayList();
         Registro registro = null;
         registro.setCampos(new ArrayList());
@@ -173,7 +192,7 @@ public class AccesoCampo {
             registro = new Registro();
             for (int j = 0; j < tamCampo; j++) {
                 registro.getCampos().get(j).setNombre(nombresCampos.get(j));
-                registro.getCampos().add(getCampo(tamCampo +1+1+(acum*x)));
+                registro.getCampos().add(getCampo(tamCampo +3+(acum*x)));
                 acum++;
                 temporal.add(registro);
             }
