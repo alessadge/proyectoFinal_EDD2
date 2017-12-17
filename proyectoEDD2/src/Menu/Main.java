@@ -1119,7 +1119,8 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        AccesoCampo cam = new AccesoCampo();
+        String preguntar;       
         String path1 = "";
         String contenido = "";
         JFileChooser jfc = new JFileChooser();
@@ -1129,43 +1130,57 @@ public class Main extends javax.swing.JFrame {
             path1 = ruta;
         }
         contenido = leer(path1);
-        String acum = "";
-        String campos = "";
-        String registros = "";
-        for (int i = 0; i < contenido.length(); i++) {
-            if ("|".equals(contenido.substring(i))) {
-                metadata = acum;
-                acum = "";
-            } else if (contenido.substring(i) == "&") {
-                campos = acum;
-                acum = "";
-            } else if (contenido.substring(i) == "~") {
-                registros = acum;
-                acum = "";
-            } else {
-                acum += contenido.substring(i);
+        File file = new File(path1);
+        try {
+            cam.crearFileCampo(file);
+            metadata=cam.leerMetadata();
+            System.out.println(metadata);
+            cam.leerNumCampos();
+            campos=cam.leerCampos();
+            for (int i = 0; i < campos.size(); i++) {
+                System.out.println(campos.get(i).getNombre());
             }
-        }
-        String[] split = campos.split(",");
-        for (int i = 0; i < split.length; i++) {
+            /*
+            String acum = "";
+            String campos = "";
+            String registros = "";
+            for (int i = 0; i < contenido.length(); i++) {
+            if ("|".equals(contenido.substring(i))) {
+            metadata = acum;
+            acum = "";
+            } else if (contenido.substring(i) == "&") {
+            campos = acum;
+            acum = "";
+            } else if (contenido.substring(i) == "~") {
+            registros = acum;
+            acum = "";
+            } else {
+            acum += contenido.substring(i);
+            }
+            }
+            String[] split = campos.split(",");
+            for (int i = 0; i < split.length; i++) {
             this.campos.add(new Campo(split[i]));
-        }
-        Registro nuevo = null;
-        String[] split2 = registros.split("\n");
-        for (int i = 0; i < split2.length; i++) {
+            }
+            Registro nuevo = null;
+            String[] split2 = registros.split("\n");
+            for (int i = 0; i < split2.length; i++) {
             String[] temporal = split2[i].split(",");
             nuevo = agregarCampos(nuevo, split);
             for (int j = 0; j < temporal.length; j++) {
-
-                if (temporal.length == 0) {
-                    nuevo.setIndice(Integer.parseInt(temporal[j]));
-                } else {
-                    nuevo.getCampos().add(new Campo(temporal[j]));
-
-                }
-
+            
+            if (temporal.length == 0) {
+            nuevo.setIndice(Integer.parseInt(temporal[j]));
+            } else {
+            nuevo.getCampos().add(new Campo(temporal[j]));
+            
+            }
+            
             }
             this.registros.add(nuevo);
+            }*/
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -1325,8 +1340,12 @@ public class Main extends javax.swing.JFrame {
 
             }
 
-            JOptionPane.showConfirmDialog(null, "Se agrego exitosamente!");
 
+
+        }
+         JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
+         for (int i = 0; i < campos.size(); i++) {
+             System.out.println(campos.get(i).getNombre());
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1365,7 +1384,7 @@ public class Main extends javax.swing.JFrame {
             }
             registros.add(aux);
 
-            JOptionPane.showConfirmDialog(null, "Se agrego exitosamente!");
+            JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -1408,12 +1427,12 @@ public class Main extends javax.swing.JFrame {
         AccesoCampo cam = new AccesoCampo();
         File archive ;
         try {
-            archive = new File("C:\\Users\\adgri_001\\Desktop\\"+metadata +".txt");
+            archive = new File("C:\\Users\\adgri_001\\Desktop\\"+ metadata +".txt");
 
             cam.crearFileCampo(archive);
             cam.escribirCampos(campos, metadata);
             cam.escribirRegistro(registros);
-
+            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
             /*for (int i = 0; i < campos.size(); i++) {
             try {
             if (cam.setCampo(i,campos.get(i))) {

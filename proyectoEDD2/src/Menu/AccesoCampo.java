@@ -54,7 +54,8 @@ public class AccesoCampo {
         flujo.writeUTF(metadata);
         numeroRegistros++;
         flujo.seek(numeroRegistros*tamanoRegistro);
-        flujo.writeInt(campos.size());
+        int numerodeCampos = campos.size();
+        flujo.writeInt(numerodeCampos);
         numeroRegistros++;
         for (int i = 0; i < campos.size(); i++) {
             anadirCampo(campos.get(i));
@@ -72,7 +73,7 @@ public class AccesoCampo {
         for (int i = 0; i < registro.size(); i++) {
             tamRegistro++;
             for (int j = 0; j < registro.get(i).getCampos().size(); j++) {
-                if (setCampo(numeroRegistros, registro.get(i).getCampos().get(j))){
+                if (setCampoRegistro(numeroRegistros, registro.get(i).getCampos().get(j))){
                     numeroRegistros++;
                 }
             }
@@ -80,7 +81,6 @@ public class AccesoCampo {
     }
      
     public String leerMetadata() throws IOException{
-        String metadata;
         flujo.seek(0);
         //numeroRegistros++;
         return flujo.readUTF();
@@ -189,6 +189,23 @@ public class AccesoCampo {
             System.out.println("\nNumero de registro fuera de limites");
             return null;
         }
+    }
+    
+    public static boolean setCampoRegistro(int i, Campo campo) throws IOException {
+        if(i >= 0 && i <= getNumeroRegistros()) {
+            if(campo.getTamano() > tamanoRegistro) {
+                System.out.println("\nTamaño de registro excedido.");
+            } else {
+                flujo.seek(i*tamanoRegistro);
+                flujo.writeUTF(campo.getContenido());
+                //tamCampo++;
+                //flujo.writeBoolean(persona.isActivo());
+                return true;
+            }
+        } else {
+            System.out.println("\nNúmero de registro fuera de límites.");
+        }
+        return false;
     }
     
 }
