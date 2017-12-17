@@ -48,11 +48,12 @@ public class AccesoCampo {
     public static int getNumeroRegistros() {
         return numeroRegistros;
     }
-    
-    public  void escribirCampos(ArrayList<Campo> campos, String metadata) throws IOException{
+    public void escribirMetadata(String metadata) throws IOException{
         flujo.seek(0);
         flujo.writeUTF(metadata);
         numeroRegistros++;
+    }
+    public  void escribirCampos(ArrayList<Campo> campos, String metadata) throws IOException{
         flujo.seek(numeroRegistros*tamanoRegistro);
         int numerodeCampos = campos.size();
         String temp = ""+numerodeCampos;
@@ -72,11 +73,9 @@ public class AccesoCampo {
     
      public void escribirRegistro(ArrayList<Registro> registro) throws IOException{        
         for (int i = 0; i < registro.size(); i++) {
-            tamRegistro++;
             for (int j = 0; j < registro.get(i).getCampos().size(); j++) {
                 if (setCampoRegistro(numeroRegistros, registro.get(i).getCampos().get(j))){
                     numeroRegistros++;
-                    tamRegistro++;
                 }
             }
         }
@@ -87,12 +86,14 @@ public class AccesoCampo {
         numeroRegistros++;
         return flujo.readUTF();
     }
-    public void leerNumRegistros() throws IOException{
-        int temp = 0;
-        flujo.seek(2*tamanoRegistro);
-        temp=flujo.readInt();
+    public int leerNumRegistros() throws IOException{
+        int retur;
+        flujo.seek(1*tamanoRegistro);
+        String temp=flujo.readUTF();
+        retur = Integer.parseInt(temp);
         numeroRegistros++;
-        tamRegistro = temp;
+        tamRegistro = retur;
+        return retur;
     }
     public void escribirNumRegistros(ArrayList<Registro>registros) throws IOException{
         flujo.seek(numeroRegistros*tamanoRegistro);
@@ -102,12 +103,14 @@ public class AccesoCampo {
         numeroRegistros++;
     }
     
-    public void leerNumCampos() throws IOException{
-        int temp = 0;
-        flujo.seek(1*tamanoRegistro);
-        temp=flujo.readInt();
+    public int leerNumCampos() throws IOException{
+        String temp;
+        flujo.seek(2*tamanoRegistro);
+        temp=flujo.readUTF();
+        int retur = Integer.parseInt(temp);
         numeroRegistros++;
-        tamCampo = temp;
+        tamCampo = retur;
+        return retur;
     }
     
     public ArrayList<Campo> leerCampos() throws IOException{
@@ -129,14 +132,13 @@ public class AccesoCampo {
         Registro registro = new Registro();
         registro.setCampos(nada);
         int acum=0;
-        System.out.println("1");
         for (int i = 0; i < tamRegistro; i++) {
+            System.out.println("1");
             registro = new Registro();
             nada = new ArrayList();
             registro.setCampos(nada);
-            System.out.println("1");
             for (int j = 0; j < tamCampo; j++) {
-                registro.getCampos().add(getCampo(acum+tamCampo+3));
+                registro.getCampos().add(getCampoReg(acum+tamCampo+3));
                 registro.getCampos().get(j).setNombre(nombresCampos.get(j));
                 acum++;
                 temporal.add(registro);
@@ -204,6 +206,15 @@ public class AccesoCampo {
         if (i >= 0 && i <= getNumeroRegistros()){
             flujo.seek(i * tamanoRegistro);
             return new Campo(flujo.readUTF(), null);
+        }else{
+            System.out.println("\nNumero de registro fuera de limites");
+            return null;
+        }
+    }
+    public static Campo getCampoReg(int i) throws IOException {
+        if (i >= 0 && i <= getNumeroRegistros()){
+            flujo.seek(i * tamanoRegistro);
+            return new Campo(null, flujo.readUTF());
         }else{
             System.out.println("\nNumero de registro fuera de limites");
             return null;

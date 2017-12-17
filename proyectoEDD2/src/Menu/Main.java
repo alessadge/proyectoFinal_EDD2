@@ -1162,11 +1162,12 @@ public class Main extends javax.swing.JFrame {
             System.out.println(cam.tamRegistro);
             campos=cam.leerCampos();
             registros=cam.leerRegistros();
-            
+            System.out.println(registros.size());
+            System.out.println(campos.size());
             for (int i = 0; i < registros.size(); i++) {
                 System.out.println("Registro #"+i);
                 for (int j = 0; j < campos.size(); j++) {
-                    System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j));
+                    System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j).getContenido());
                 }
             }
             /*
@@ -1464,8 +1465,9 @@ public class Main extends javax.swing.JFrame {
             archive = new File("C:\\Users\\adgri_001\\Desktop\\"+ metadata +".txt");
 
             cam.crearFileCampo(archive);
-            cam.escribirCampos(campos, metadata);
+            cam.escribirMetadata(metadata);
             cam.escribirNumRegistros(registros);
+            cam.escribirCampos(campos, metadata);
             cam.escribirRegistro(registros);
             JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
             /*for (int i = 0; i < campos.size(); i++) {
