@@ -263,6 +263,7 @@ public class Raiz {
 
     public boolean buscar(int valor, Nodo n) {
         Nodo actual = n;
+
         boolean esta = false;
         for (int i = 0; i < Lista.ingresados.size() && !esta; i++) {
             if (Lista.ingresados.get(i) == valor) {
@@ -272,56 +273,25 @@ public class Raiz {
             }
         }
         System.out.println("El elemento buscado no se encuentra en el arbol B");
-        return false;
-        
-        /*if(buscarEnNodo(valor, actual)){
-            System.out.println("Jahaziel++++++++++");
-            return true;
-            
+        //return false;
+        if (buscarEnNodo(valor, actual)) {
+            System.out.println(actual.valores[0]);
+            //System.out.println("Jahaziel++++++++++");
+            esta = true;
+            return esta;
+
+        } else {
+            if (!actual.tengoHijos) {
+            return false;
         }else{
-            if(!actual.tengoHijos){
-                return false;
-            }else{
-                if(valor < actual.valores[0]){
-                    System.out.println("hola");
-                    System.out.println(actual.nodo[0].valores[0]);
-                    actual = actual.nodo[0];
-                    
-                    buscar(valor,actual);
-                }
-                for (int i = 0; i < actual.valores.length; i++) {
-                    if(valor>actual.valores[i] && actual.valores[i]>0){
-                        for (int j = 0; j < actual.nodo.length; j++) {
-                            if(actual.nodo[i] != null){
-                                actual = actual.nodo[i];
-                            }
-                        }
-                        buscar(valor,actual);
-                    }
-                }
-                if(valor > actual.valores[actual.valores.length-1]){
-                    System.out.println(actual.nodo[actual.nodo.length-1].valores[0]);
-                    actual = actual.nodo[actual.nodo.length-1];
-                    //System.out.println(actual.valores[0]); 
-                    buscar(valor,actual);
-                }
-                int x = lastValue(actual);
-                System.out.println(x);
-                for (int i = 0; i < x; i++) {
-                    System.out.println("");
-                    if(i > 0 && i < x-1){
-                        if(valor>actual.valores[i] && valor<actual.valores[i+1]){
-                            /*System.out.println(actual.valores[i]);
-                            System.out.println("");
-                            System.out.println("#################");
-                            actual = actual.nodo[i];
-                            buscar(valor,actual);
-                        }
-                    }
-                }
+            if (valor < actual.valores[0]) {
+            System.out.println("hola");
+            actual = actual.nodo[0];
+            buscar(valor, actual);
+        } 
             }
         }
-        return false;*/
+        return esta;
     }
     public int lastValue(Nodo n){
         int cont = 0;
