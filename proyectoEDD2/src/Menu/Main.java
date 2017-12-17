@@ -1386,6 +1386,10 @@ public class Main extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
         }
+        for (int i = 0; i < registros.size(); i++) {
+            arbol.insertar(registros.get(i).getIndice());
+        }
+        
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1654,4 +1658,5 @@ ArrayList<Campo> campos = new ArrayList();
     boolean alrsave = false;
     String path = "";
     String metadata = "";
+    Raiz arbol = new Raiz(6);
 }
