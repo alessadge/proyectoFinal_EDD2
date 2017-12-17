@@ -164,6 +164,7 @@ public class Main extends javax.swing.JFrame {
         tab_nuevo = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
         panel_campos = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -234,6 +235,7 @@ public class Main extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jRadioButton3 = new javax.swing.JRadioButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        panel_cruzar = new javax.swing.JPanel();
         Tab_principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -303,18 +305,25 @@ public class Main extends javax.swing.JFrame {
                 .addGap(37, 37, 37))
         );
 
+        jButton18.setText("Cruzar archivos");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(tab_nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -324,12 +333,14 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(45, 45, 45)
+                .addGap(38, 38, 38)
                 .addComponent(jButton2)
-                .addGap(45, 45, 45)
+                .addGap(47, 47, 47)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton18)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
@@ -1046,6 +1057,17 @@ public class Main extends javax.swing.JFrame {
 
         jRadioButton3.setText("jRadioButton3");
 
+        javax.swing.GroupLayout panel_cruzarLayout = new javax.swing.GroupLayout(panel_cruzar);
+        panel_cruzar.setLayout(panel_cruzarLayout);
+        panel_cruzarLayout.setHorizontalGroup(
+            panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        panel_cruzarLayout.setVerticalGroup(
+            panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Archivo");
@@ -1227,12 +1249,13 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here
         JPanel p = new JPanel();
 
-        p = panel_indices;
-
+        p = panel_estandarizacion;
+        tab_nuevo.removeAll();
         tab_nuevo.setLayout(new java.awt.BorderLayout());
         tab_nuevo.revalidate();
         tab_nuevo.repaint();
         tab_nuevo.add(p);
+        
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -1531,6 +1554,18 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1ActionPerformed
 
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+        JPanel p = new JPanel();
+
+        p = panel_cruzar;
+        tab_nuevo.removeAll();
+        tab_nuevo.setLayout(new java.awt.BorderLayout());
+        tab_nuevo.revalidate();
+        tab_nuevo.repaint();
+        tab_nuevo.add(p);
+    }//GEN-LAST:event_jButton18ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1582,6 +1617,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1642,6 +1678,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDialog jd_indices;
     private javax.swing.JDialog jd_registros;
     private javax.swing.JPanel panel_campos;
+    private javax.swing.JPanel panel_cruzar;
     private javax.swing.JPanel panel_estandarizacion;
     private javax.swing.JPanel panel_indices;
     private javax.swing.JPanel panel_registros;
