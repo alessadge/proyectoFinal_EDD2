@@ -283,12 +283,27 @@ public class Raiz {
         } else {
             if (!actual.tengoHijos) {
             return false;
-        }else{
-            if (valor < actual.valores[0]) {
-            System.out.println("hola");
-            actual = actual.nodo[0];
-            buscar(valor, actual);
-        } 
+            }else{
+                if (valor < actual.valores[0]) {
+                    System.out.println("hola");
+                    actual = actual.nodo[0];
+                    esta = buscar(valor, actual);
+                }
+                int x = lastValue(actual);
+                for (int i = 0; i < actual.valores.length; i++) {
+                    if(i<actual.valores.length-1){
+                        if(actual.valores[i] >0 && actual.valores[i+1]>0){
+                            if(valor>actual.valores[i] && valor<actual.valores[i+1]){
+                                actual = actual.nodo[i];
+                                esta = buscar(valor,actual);
+                            }
+                        }
+                        if(actual.valores[i]>0 && actual.valores[i+1]==0){
+                            actual = actual.nodo[i+1];
+                            esta = buscar(valor,actual);
+                        }
+                    }
+                }
             }
         }
         return esta;
