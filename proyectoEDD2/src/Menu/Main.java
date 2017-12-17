@@ -192,6 +192,9 @@ public class Main extends javax.swing.JFrame {
         jButton22 = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         panel_estandarizacion = new javax.swing.JPanel();
+        jButton23 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jd_campos = new javax.swing.JDialog();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
@@ -632,15 +635,44 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
+        jButton23.setText("Exportar Archivo a Excel");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+
+        jButton24.setText("Exportar Archivo a XML");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Pulse Los Botones para exportar su archivo a XML o Excel");
+
         javax.swing.GroupLayout panel_estandarizacionLayout = new javax.swing.GroupLayout(panel_estandarizacion);
         panel_estandarizacion.setLayout(panel_estandarizacionLayout);
         panel_estandarizacionLayout.setHorizontalGroup(
             panel_estandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 569, Short.MAX_VALUE)
+            .addGroup(panel_estandarizacionLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(panel_estandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(jButton23))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
         panel_estandarizacionLayout.setVerticalGroup(
             panel_estandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGroup(panel_estandarizacionLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1647,6 +1679,50 @@ public class Main extends javax.swing.JFrame {
         tab_nuevo.add(p);
     }//GEN-LAST:event_jButton18ActionPerformed
 
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        
+        if (campos.isEmpty()||registros.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Error al Exportar\n El Archivo puede estar vacio o no ha sido cargado");
+            
+            
+        } else {
+            ExportExcel ex = new ExportExcel();
+            ex.setCampos(campos);
+            ex.setRegistros(registros);
+            ex.setNombre(archivo.getNombre());
+
+            try {
+                ex.ExportXMLJazz();
+            } catch (IOException ex1) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+        
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        if (campos.isEmpty()||registros.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Error al Exportar\n El Archivo puede estar vacio o no ha sido cargado");
+            
+            
+        } else {
+        
+            ExportarXMLJ ex2 = new ExportarXMLJ();
+        
+            ex2.setNombre_archivo(archivo.getNombre());
+            ex2.setRegistrosAux1(registros);
+        
+        
+        
+            try {
+                ex2.generate2();
+            } catch (Exception ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_jButton24ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1704,6 +1780,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1713,6 +1791,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
