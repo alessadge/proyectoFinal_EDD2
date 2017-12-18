@@ -10,7 +10,7 @@ public class AccesoCampo {
     
     private static RandomAccessFile flujo;
     private static int numeroRegistros;
-    private static int tamanoRegistro = 80;
+    static int tamanoRegistro = 80;
     int tamCampo;
     int tamRegistro;
     private static ArrayList<String> nombresCampos = new ArrayList();
