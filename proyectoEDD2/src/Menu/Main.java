@@ -199,6 +199,7 @@ public class Main extends javax.swing.JFrame {
         jPanel20 = new javax.swing.JPanel();
         jButton22 = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
+        jButton27 = new javax.swing.JButton();
         panel_estandarizacion = new javax.swing.JPanel();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
@@ -692,15 +693,28 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Indexar", jPanel20);
 
+        jButton27.setText("Re Indexar");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 554, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jButton27)
+                .addContainerGap(385, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 331, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jButton27)
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Re Indexar", jPanel21);
@@ -1994,6 +2008,7 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton25ActionPerformed
 
+<<<<<<< HEAD
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
 
         AccesoCampo cam = new AccesoCampo();
@@ -2138,6 +2153,26 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton28ActionPerformed
 
+=======
+    //Indixar
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        // TODO add your handling code here:
+        //mandas el arreglo de registros ya con los indices puestos
+        ArrayList<Integer>temp = crearIndices(registros);
+        crearArbol(temp);
+          
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    
+    //re indexar
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        // TODO add your handling code here:
+        //mandale el arreglo de registros ya con los nuevos indices
+        ArrayList<Integer>temp = crearIndices(registros);
+        crearArbol(temp);
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+>>>>>>> c4d940090755e61bf8cc420cd97ab2af51e25d5e
     /**
      * @param args the command line arguments
      */
@@ -2202,7 +2237,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
+<<<<<<< HEAD
     private javax.swing.JButton jButton28;
+=======
+>>>>>>> c4d940090755e61bf8cc420cd97ab2af51e25d5e
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
