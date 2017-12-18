@@ -19,6 +19,7 @@ import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -1272,27 +1273,25 @@ public class Main extends javax.swing.JFrame {
             System.out.println(cam.tamCampo);
             System.out.println(cam.tamRegistro);
 
-            campos=cam.leerCampos();
-            registros=cam.leerRegistros();
+            campos = cam.leerCampos();
+            registros = cam.leerRegistros();
             System.out.println(registros.size());
             System.out.println(campos.size());
-            
 
             campos = cam.leerCampos();
             registros = cam.leerRegistros();
-
 
             for (int i = 0; i < registros.size(); i++) {
                 System.out.println("Registro #" + i);
                 for (int j = 0; j < campos.size(); j++) {
 
-                    System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j).getContenido());
+                    System.out.println("Campo #" + i + " :" + registros.get(i).getCampos().get(j).getContenido());
 
                     System.out.println("Campo #" + i + " :" + registros.get(i).getCampos().get(j));
 
                 }
             }
-            
+
             JPanel p = new JPanel();
 
             p = jPanel2;
@@ -1347,6 +1346,30 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        //pasar informacion correspondiente a las tablas
+        //Tabla de campos.
+        DefaultTableModel modelo = (DefaultTableModel) tabla_campo.getModel();
+        String[] columnas = new String[1];
+        DefaultTableModel modelo2 = (DefaultTableModel) tabla_campo.getModel();
+
+        if (tabla_campo.getColumnCount() == 0) {
+            columnas[0] = "Nombres de Campos";
+            tabla_campo.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, columnas));
+            modelo2.addColumn(columnas[0]);
+        }
+
+        for (int i = 0; i < campos.size(); i++) {
+
+            String aux = campos.get(i).getNombre();
+            Object[] row = {aux};
+            modelo.addRow(row);
+
+        }
+
+        tabla_campo.setModel(modelo);
+
+        //Fin tabla campos.
+        //ComienDefaultTableModel zo de tablas de registros
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -1426,19 +1449,53 @@ public class Main extends javax.swing.JFrame {
         tab_nuevo.repaint();
         tab_nuevo.add(p);
 
-        String[] columnas = new String[campos.size()];
+        if (registros.size() == 0) {
+            String[] columnas = new String[campos.size()];
 
-        for (int i = 0; i < campos.size(); i++) {
-            columnas[i] = campos.get(i).getNombre();
+            for (int i = 0; i < campos.size(); i++) {
+                columnas[i] = campos.get(i).getNombre();
+            }
+
+            tabla_registros.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    columnas
+            ));
+
+            DefaultTableModel modelo2 = (DefaultTableModel) tabla_registros.getModel();
+            tabla_registros.setModel(modelo2);
+
+        } else {
+            String[] columnas = new String[campos.size()];
+
+            for (int i = 0; i < campos.size(); i++) {
+                columnas[i] = campos.get(i).getNombre();
+            }
+
+            tabla_registros.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    columnas
+            ));
+
+            DefaultTableModel modelo2 = (DefaultTableModel) tabla_registros.getModel();
+            tabla_registros.setModel(modelo2);
+
+            DefaultTableModel modelo3 = (DefaultTableModel) tabla_registros.getModel();
+
+            String[] fila = new String[campos.size()];
+
+            for (int i = 0; i < registros.size(); i++) {
+
+                for (int j = 0; j < campos.size(); j++) {
+                    fila[j] = registros.get(i).getCampos().get(j).getContenido();
+
+                }
+                modelo3.addRow(fila);
+
+            }
+            tabla_registros.setModel(modelo3);
+
         }
 
-        tabla_registros.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{},
-                columnas
-        ));
-
-        DefaultTableModel modelo2 = (DefaultTableModel) tabla_registros.getModel();
-        tabla_registros.setModel(modelo2);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1547,7 +1604,6 @@ public class Main extends javax.swing.JFrame {
             }
             registros.add(aux);
 
-
         }
         for (int i = 0; i < registros.size(); i++) {
             arbol.insertar(registros.get(i).getIndice());
@@ -1597,16 +1653,16 @@ public class Main extends javax.swing.JFrame {
         File archive;
         try {
 
-            archive = new File("C:\\Users\\adgri_001\\Desktop\\"+ metadata +".txt");
+            archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
             for (int i = 0; i < registros.size(); i++) {
-                System.out.println("Registro #"+i);
+                System.out.println("Registro #" + i);
                 for (int j = 0; j < campos.size(); j++) {
-                    System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j).getContenido());
+                    System.out.println("Campo #" + i + " :" + registros.get(i).getCampos().get(j).getContenido());
                 }
             }
 
-            archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
-
+            //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
+            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + ".txt");
 
             cam.crearFileCampo(archive);
             cam.escribirMetadata(metadata);
@@ -1652,6 +1708,9 @@ public class Main extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        //Pasar la informacion correspondiente a las tablas
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void bttn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttn_1ActionPerformed
@@ -1717,11 +1776,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        
-        if (campos.isEmpty()||registros.isEmpty()) {
+
+        if (campos.isEmpty() || registros.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Error al Exportar\n El Archivo puede estar vacio o no ha sido cargado");
-            
-            
+
         } else {
             ExportExcel ex = new ExportExcel();
             ex.setCampos(campos);
@@ -1734,30 +1792,27 @@ public class Main extends javax.swing.JFrame {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex1);
             }
         }
-        
+
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        if (campos.isEmpty()||registros.isEmpty()) {
+        if (campos.isEmpty() || registros.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Error al Exportar\n El Archivo puede estar vacio o no ha sido cargado");
-            
-            
+
         } else {
-        
+
             ExportarXMLJ ex2 = new ExportarXMLJ();
-        
+
             ex2.setNombre_archivo(archivo.getNombre());
             ex2.setRegistrosAux1(registros);
-        
-        
-        
+
             try {
                 ex2.generate2();
             } catch (Exception ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }//GEN-LAST:event_jButton24ActionPerformed
 
     /**
@@ -1908,15 +1963,16 @@ public class Main extends javax.swing.JFrame {
     String path = "";
     String metadata = "";
     Raiz arbol = new Raiz(6);
-    
-    public void crearArbol(ArrayList<Integer> a){
+
+    public void crearArbol(ArrayList<Integer> a) {
         arbol = new Raiz(6);
         for (int i = 0; i < a.size(); i++) {
             arbol.insertar(a.get(i).intValue());
         }
     }
+
     //arbol.inertar(int)
-    public ArrayList<Integer> crearIndices(ArrayList<Registro> a){
+    public ArrayList<Integer> crearIndices(ArrayList<Registro> a) {
         ArrayList<Integer> ret = new ArrayList();
         for (int i = 0; i < a.size(); i++) {
             ret.add(a.get(i).getIndice());
