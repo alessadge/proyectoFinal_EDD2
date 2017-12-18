@@ -163,19 +163,19 @@ public class AccesoCampo {
         }
         return registro;
     }
-    
+   
     public  void modificarRegistro(int x,Registro temp) throws IOException{
         if (tamCampo == 0) {
             System.out.println("Tiene que cargar primero");
         }else{
-            int posicion = tamCampo+3+x;
+            int posicion = (tamCampo+3+x)*tamanoRegistro;
             flujo.seek(posicion);
             for (int i = 0; i < tamCampo; i++) {
                 for (int j = 0; j < tamanoRegistro; j++) {
-                    flujo.seek(posicion*tamanoRegistro);
+                    flujo.seek(posicion+j);
                     flujo.writeUTF("");
                 }
-                setCampo(posicion,temp.getCampos().get(i));
+                setCampoRegistro(posicion,temp.getCampos().get(i));
                 posicion++;
             }
         }
