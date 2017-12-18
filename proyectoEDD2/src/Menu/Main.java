@@ -252,10 +252,14 @@ public class Main extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         panel_cruzar = new javax.swing.JPanel();
         jButton20 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_addCampos = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton21 = new javax.swing.JButton();
+        cb_camposCruzar = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jButton27 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
         Tab_principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -1221,29 +1225,63 @@ public class Main extends javax.swing.JFrame {
         jRadioButton3.setText("jRadioButton3");
 
         jButton20.setText("Cargar Segundo Archivo");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Campos Pertenecientes al Segundo Archivo");
 
-        jLabel9.setText("Seleccione los que desea añadir para cruzar");
+        jLabel9.setText("Seleccione los Campos que desea añadir para cruzar");
 
         jButton21.setText("add");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Elimine Campos que no desea si añadio por error");
+
+        jButton27.setText("Delet");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+
+        jButton28.setText("Cruzar Archivo");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_cruzarLayout = new javax.swing.GroupLayout(panel_cruzar);
         panel_cruzar.setLayout(panel_cruzarLayout);
         panel_cruzarLayout.setHorizontalGroup(
             panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_cruzarLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
                 .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton21)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(787, Short.MAX_VALUE))
+                    .addGroup(panel_cruzarLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_addCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton21))
+                        .addGap(65, 65, 65)
+                        .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(cb_camposCruzar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton27)))
+                    .addGroup(panel_cruzarLayout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_cruzarLayout.setVerticalGroup(
             panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1253,12 +1291,20 @@ public class Main extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9)
+                .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_addCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_camposCruzar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(jButton21)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton21)
+                    .addComponent(jButton27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1488,7 +1534,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here
         JPanel p = new JPanel();
 
-        p = panel_estandarizacion;
+        p = panel_indices;
         tab_nuevo.removeAll();
         tab_nuevo.setLayout(new java.awt.BorderLayout());
         tab_nuevo.revalidate();
@@ -1503,6 +1549,7 @@ public class Main extends javax.swing.JFrame {
         JPanel p = new JPanel();
 
         p = panel_estandarizacion;
+        tab_nuevo.removeAll();
         tab_nuevo.setLayout(new java.awt.BorderLayout());
         tab_nuevo.revalidate();
         tab_nuevo.repaint();
@@ -1734,7 +1781,9 @@ public class Main extends javax.swing.JFrame {
         File archive;
         try {
 
-            archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
+            //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
+            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + ".txt");
+
             for (int i = 0; i < registros.size(); i++) {
                 System.out.println("Registro #" + i);
                 for (int j = 0; j < campos.size(); j++) {
@@ -1925,7 +1974,7 @@ public class Main extends javax.swing.JFrame {
         }
         try {
             cam.leerNumCampos();
-            temp=cam.leerCampos();
+            temp = cam.leerCampos();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1940,10 +1989,154 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         AccesoCampo cam = new AccesoCampo();
         String campoTemp = modificarCampo.getText();
-        if (campoTemp.length() > cam.tamanoRegistro/2) {
+        if (campoTemp.length() > cam.tamanoRegistro / 2) {
             JOptionPane.showMessageDialog(null, "El campo excedio el tamaño permitido");
         }
     }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+
+        AccesoCampo cam = new AccesoCampo();
+        String preguntar;
+        String path1 = "";
+        String contenido = "";
+        JFileChooser jfc = new JFileChooser();
+        int seleccion = jfc.showOpenDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            String ruta = jfc.getSelectedFile().getPath();
+            path1 = ruta;
+        }
+        contenido = leer(path1);
+        File file = new File(path1);
+        try {
+            cam.crearFileCampo(file);
+            metadata = cam.leerMetadata();
+            cam.leerNumRegistros();
+            cam.leerNumCampos();
+            System.out.println(cam.tamCampo);
+            System.out.println(cam.tamRegistro);
+
+            campos2 = cam.leerCampos();
+            registros2 = cam.leerRegistros();
+            System.out.println(registros2.size());
+            System.out.println(campos2.size());
+
+            campos2 = cam.leerCampos();
+            registros2 = cam.leerRegistros();
+   
+            JPanel p = new JPanel();
+
+            p = jPanel2;
+            String nombre = metadata;
+            metadata = nombre;
+            p.setName(nombre);
+
+            Tab_principal.add(p);
+            archivo.setNombre(nombre);
+
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        for (Campo campo : campos2) {
+            modelo.addElement(campo);
+        }
+        cb_addCampos.setModel(modelo);
+
+
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        modelo.addElement(cb_addCampos.getSelectedItem());
+
+        cb_camposCruzar.setModel(modelo);
+
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        cb_camposCruzar.remove((int) cb_camposCruzar.getSelectedItem());
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        if (registros2.size() == registros.size()) {
+            
+            for (int i = 0; i < campos.size(); i++) {
+                campos3.add(campos.get(i));
+            }
+
+            for (int i = 0; i < campos2.size(); i++) {
+                campos3.add(campos2.get(i));
+            }
+            
+            System.out.println("CAmpos en campos3");
+            System.out.println("----------------------------------------------------------");
+           
+                   
+            for (int i = 0; i < campos3.size(); i++) {
+                System.out.println(campos3.get(i).getNombre());
+            }
+            System.out.println("---------------------------------------------------------");
+            
+            int acum1=0;
+            int acum2=0;
+            
+            for (int i = 0; i < registros.size(); i++) {    
+                Registro auxR = new Registro();
+                auxR.setCampos(campos3);
+                for (int j = 0; j < campos3.size(); j++) {
+                    if(j<campos.size()){
+                        auxR.getCampos().get(j).setContenido(registros.get(i).getCampos().get(acum1).getContenido());
+                        acum1++;
+                    } else{
+                        auxR.getCampos().get(j).setContenido(registros2.get(i).getCampos().get(acum2).getContenido());
+                        acum2++;
+                    }
+                }
+                acum1=0;
+                acum2=0;
+                registros3.add(auxR);
+            }
+ 
+            System.out.println(registros3.get(0).getCampos().get(0).getContenido());
+            System.out.println(registros3.get(0).getCampos().get(1).getContenido());
+            System.out.println(registros3.get(0).getCampos().get(2).getContenido());
+            System.out.println(registros3.get(0).getCampos().get(3).getContenido());
+
+            System.out.println("--------------------------------------");
+            AccesoCampo cam = new AccesoCampo();
+            File archive;
+            try {
+
+                //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
+                archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "Cruzada.txt");
+
+                for (int i = 0; i < registros3.size(); i++) {
+                    System.out.println("Registro #" + i);
+                    for (int j = 0; j < campos3.size(); j++) {
+                        System.out.println("Campo #" + i + " :" + registros3.get(i).getCampos().get(j).getContenido());
+                    }
+                }
+
+                //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
+                archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + "Cruzada.txt");
+
+                cam.crearFileCampo(archive);
+                cam.escribirMetadata(metadata);
+                cam.escribirNumRegistros(registros3);
+                cam.escribirCampos(campos3, metadata);
+                cam.escribirRegistro(registros3);
+                JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
+
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_jButton28ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1987,6 +2180,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JRadioButton bttn_2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JDialog cargar;
+    private javax.swing.JComboBox<String> cb_addCampos;
+    private javax.swing.JComboBox<String> cb_camposCruzar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2006,6 +2201,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2013,11 +2210,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<Campo> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2091,6 +2288,9 @@ public class Main extends javax.swing.JFrame {
     ArrayList<Registro> registros = new ArrayList();
     ArrayList<Campo> campos2 = new ArrayList();//PARA SEGUNDO archivo al cruuzar//
     ArrayList<Registro> registros2 = new ArrayList();//Para Cruzar
+    ArrayList<Campo> campos3 = new ArrayList();
+    ArrayList<Registro> registros3 = new ArrayList();
+
     Archivo archivo = new Archivo();
     JPanel p = new JPanel();
     JPanel a = panel_registros;
@@ -2099,7 +2299,7 @@ public class Main extends javax.swing.JFrame {
     String path = "";
     String metadata = "";
     Raiz arbol = new Raiz(6);
-    Boolean cargado=false;
+    Boolean cargado = false;
 
     public void crearArbol(ArrayList<Integer> a) {
         arbol = new Raiz(6);
