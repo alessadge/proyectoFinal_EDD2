@@ -1164,12 +1164,25 @@ public class Main extends javax.swing.JFrame {
             registros=cam.leerRegistros();
             System.out.println(registros.size());
             System.out.println(campos.size());
+            
             for (int i = 0; i < registros.size(); i++) {
                 System.out.println("Registro #"+i);
                 for (int j = 0; j < campos.size(); j++) {
                     System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j).getContenido());
                 }
             }
+            
+            JPanel p = new JPanel();
+
+            p = jPanel2;
+            String nombre = metadata;
+            metadata = nombre;
+            p.setName(nombre);
+
+            Tab_principal.add(p);
+            archivo.setNombre(nombre);
+            //New panel...nombre metadata...
+            //
             /*
             String acum = "";
             String campos = "";
@@ -1415,12 +1428,12 @@ public class Main extends javax.swing.JFrame {
             }
             registros.add(aux);
 
-            JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
+
         }
         for (int i = 0; i < registros.size(); i++) {
             arbol.insertar(registros.get(i).getIndice());
         }
-        
+        JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1463,7 +1476,12 @@ public class Main extends javax.swing.JFrame {
         File archive ;
         try {
             archive = new File("C:\\Users\\adgri_001\\Desktop\\"+ metadata +".txt");
-
+            for (int i = 0; i < registros.size(); i++) {
+                System.out.println("Registro #"+i);
+                for (int j = 0; j < campos.size(); j++) {
+                    System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j).getContenido());
+                }
+            }
             cam.crearFileCampo(archive);
             cam.escribirMetadata(metadata);
             cam.escribirNumRegistros(registros);

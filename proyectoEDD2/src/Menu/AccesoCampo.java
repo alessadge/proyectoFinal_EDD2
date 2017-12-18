@@ -133,7 +133,6 @@ public class AccesoCampo {
         registro.setCampos(nada);
         int acum=0;
         for (int i = 0; i < tamRegistro; i++) {
-            System.out.println("1");
             registro = new Registro();
             nada = new ArrayList();
             registro.setCampos(nada);
@@ -141,8 +140,9 @@ public class AccesoCampo {
                 registro.getCampos().add(getCampoReg(acum+tamCampo+3));
                 registro.getCampos().get(j).setNombre(nombresCampos.get(j));
                 acum++;
-                temporal.add(registro);
+
             }
+            temporal.add(registro);
         }
         return temporal;
     }
