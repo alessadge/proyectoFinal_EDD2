@@ -1271,25 +1271,25 @@ public class Main extends javax.swing.JFrame {
             cam.leerNumCampos();
             System.out.println(cam.tamCampo);
             System.out.println(cam.tamRegistro);
-<<<<<<< HEAD
+
             campos=cam.leerCampos();
             registros=cam.leerRegistros();
             System.out.println(registros.size());
             System.out.println(campos.size());
             
-=======
+
             campos = cam.leerCampos();
             registros = cam.leerRegistros();
 
->>>>>>> 044127da9dc504bff88f9d06208f9c8ed56d05a2
+
             for (int i = 0; i < registros.size(); i++) {
                 System.out.println("Registro #" + i);
                 for (int j = 0; j < campos.size(); j++) {
-<<<<<<< HEAD
+
                     System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j).getContenido());
-=======
+
                     System.out.println("Campo #" + i + " :" + registros.get(i).getCampos().get(j));
->>>>>>> 044127da9dc504bff88f9d06208f9c8ed56d05a2
+
                 }
             }
             
@@ -1552,11 +1552,9 @@ public class Main extends javax.swing.JFrame {
         for (int i = 0; i < registros.size(); i++) {
             arbol.insertar(registros.get(i).getIndice());
         }
-<<<<<<< HEAD
-        JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
-=======
 
->>>>>>> 044127da9dc504bff88f9d06208f9c8ed56d05a2
+        JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
+
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1598,7 +1596,7 @@ public class Main extends javax.swing.JFrame {
         AccesoCampo cam = new AccesoCampo();
         File archive;
         try {
-<<<<<<< HEAD
+
             archive = new File("C:\\Users\\adgri_001\\Desktop\\"+ metadata +".txt");
             for (int i = 0; i < registros.size(); i++) {
                 System.out.println("Registro #"+i);
@@ -1606,10 +1604,10 @@ public class Main extends javax.swing.JFrame {
                     System.out.println("Campo #"+i+" :"+registros.get(i).getCampos().get(j).getContenido());
                 }
             }
-=======
+
             archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
 
->>>>>>> 044127da9dc504bff88f9d06208f9c8ed56d05a2
+
             cam.crearFileCampo(archive);
             cam.escribirMetadata(metadata);
             cam.escribirNumRegistros(registros);
