@@ -65,8 +65,7 @@ public class Campo implements Serializable {
     
     @Override
     public String toString() {
-        return "\nNombre: " + Nombre + 
-                "\nContenido: " + Contenido;
+        return "\nNombre: " + Nombre;
     }   
     
      public int getTamano() {

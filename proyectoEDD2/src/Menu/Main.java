@@ -193,7 +193,13 @@ public class Main extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jTabbedPane6 = new javax.swing.JTabbedPane();
+        jPanel23 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        jButton27 = new javax.swing.JButton();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jPanel24 = new javax.swing.JPanel();
         panel_indices = new javax.swing.JPanel();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel20 = new javax.swing.JPanel();
@@ -585,10 +591,11 @@ public class Main extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addComponent(jButton8)
-                        .addGap(18, 18, 18)
+                        .addGap(31, 31, 31)
                         .addComponent(jButton9)
-                        .addGap(18, 18, 18)
+                        .addGap(37, 37, 37)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
@@ -625,41 +632,109 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Introducir Registros", jPanel5);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
+        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTabbedPane2.addTab("Modificar Registro", jPanel6);
+        jButton27.setText("Modificar Registro");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+        });
+
+        jLabel13.setText("Buscar por indice:");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel13)
+                        .addGap(28, 28, 28)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 88, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(jButton27)
+                .addGap(58, 58, 58))
         );
 
-        jTabbedPane2.addTab("Buscar Registros", jPanel7);
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(117, Short.MAX_VALUE))
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
+        jTabbedPane6.addTab("Por Indice", jPanel23);
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 559, Short.MAX_VALUE)
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 326, Short.MAX_VALUE)
+        );
+
+        jTabbedPane6.addTab("Por Criterio", jPanel24);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 564, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 354, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Modificar Registro", jPanel6);
 
         javax.swing.GroupLayout panel_registrosLayout = new javax.swing.GroupLayout(panel_registros);
         panel_registros.setLayout(panel_registrosLayout);
         panel_registrosLayout.setHorizontalGroup(
             panel_registrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
         );
         panel_registrosLayout.setVerticalGroup(
             panel_registrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
         );
 
         jButton22.setText("Guardar");
@@ -1333,6 +1408,7 @@ public class Main extends javax.swing.JFrame {
         String preguntar;
         String path1 = "";
         String contenido = "";
+        cargado = true;
         JFileChooser jfc = new JFileChooser();
         int seleccion = jfc.showOpenDialog(this);
         if (seleccion == JFileChooser.APPROVE_OPTION) {
@@ -1468,10 +1544,15 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         archivo = new Archivo();
-
+        
         JPanel p = new JPanel();
-
+        
         Tab_principal.removeAll();
+        
+        registros = new ArrayList();
+        campos = new ArrayList();
+        
+        cargado = false;
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -1645,50 +1726,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) tabla_registros.getModel();
-        Object[] row = {};
-        modelo.addRow(row);
-        tabla_registros.setModel(modelo);
-
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tabla_registros.getSelectedRow();
-        tabla_registros.remove(selectedRow);
-        if (!registros.isEmpty()) {
-            registros.remove(selectedRow);
-        }
-
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) tabla_registros.getModel();
-
-        String s;
-
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            Registro aux = new Registro();
-            aux.setCampos(llenarCampos());
-            for (int j = 0; j < modelo.getColumnCount(); j++) {
-                s = (String) modelo.getValueAt(i, j);
-                aux.getCampos().get(j).setContenido(s);
-
-            }
-            registros.add(aux);
-
-        }
-        for (int i = 0; i < registros.size(); i++) {
-            arbol.insertar(registros.get(i).getIndice());
-        }
-
-        JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
-
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1737,8 +1774,8 @@ public class Main extends javax.swing.JFrame {
                 }
             }
 
-            //archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
-            archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + ".txt");
+            archive = new File("C:\\Users\\adgri_001\\Desktop\\" + metadata + ".txt");
+            //archive = new File("C:\\Users\\Jahaziel\\Desktop\\" + metadata + ".txt");
 
             cam.crearFileCampo(archive);
             cam.escribirMetadata(metadata);
@@ -1781,6 +1818,7 @@ public class Main extends javax.swing.JFrame {
             
             }
             } */
+            cam.cerrar();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1900,15 +1938,16 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         ArrayList<Campo> temp = new ArrayList();
         String contenido = "";
-        String path1;
+        String path1 = "";
         JFileChooser jfc = new JFileChooser();
         int seleccion = jfc.showOpenDialog(this);
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             String ruta = jfc.getSelectedFile().getPath();
             path1 = ruta;
         }
-        contenido = leer(path);
-        File file = new File(path);
+        contenido = leer(path1);
+        File file = new File(path1);
+        fileGlobal = file;
         AccesoCampo cam = new AccesoCampo();
         try {
             cam.crearFileCampo(file);
@@ -1916,8 +1955,10 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
+            cam.leerNumRegistros();
             cam.leerNumCampos();
             temp=cam.leerCampos();
+            //cam.cerrar();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1929,13 +1970,107 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        // TODO add your handling code here:
-        AccesoCampo cam = new AccesoCampo();
-        String campoTemp = modificarCampo.getText();
-        if (campoTemp.length() > cam.tamanoRegistro/2) {
-            JOptionPane.showMessageDialog(null, "El campo excedio el tamaño permitido");
+        try {
+            // TODO add your handling code here:
+            AccesoCampo cam = new AccesoCampo();
+            String campoTemp = modificarCampo.getText();
+            cam.crearFileCampo(fileGlobal);
+            cam.leerMetadata();
+            int cantReg=cam.leerNumRegistros();
+            int cantCamp=cam.leerNumCampos();
+            int total = cantReg + cantCamp +3;
+            int x = jComboBox2.getSelectedIndex();
+            cam.modificarCampo(x+3, campoTemp);
+            int acum = cantCamp + x + 3;
+            for (int i = 0; i < cantReg; i++) {
+                    String nuevo = JOptionPane.showInputDialog("Ingrese el nuevo campo "+campoTemp+" del Registro#"+i+":");
+                    cam.modificarCampo(acum, nuevo);  
+                    acum+=cantCamp; 
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        try {
+            // TODO add your handling code here:
+            int numero = Integer.parseInt(jTextField4.getText());
+            String contenido = "";
+            String path1;
+            JFileChooser jfc = new JFileChooser();
+            int seleccion = jfc.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                String ruta = jfc.getSelectedFile().getPath();
+                path1 = ruta;
+            }
+            contenido = leer(path);
+            File file = new File(path);
+            AccesoCampo cam = new AccesoCampo();
+            int numReg = cam.leerNumRegistros();
+            int numCamp = cam.leerNumCampos();
+            if (numero>numReg) {
+                JOptionPane.showMessageDialog(null, "La posicion que usted guardo no existe.");
+            }else{
+                for (int i = 0; i < numCamp; i++) {
+                    Campo campo = new Campo();
+                    String nuevoValor = JOptionPane.showInputDialog("Ingrese el nuevo valor del campo "+cam.devolverRegistro(i).getCampos().get(i).getNombre());
+                    campo.setNombre(cam.devolverRegistro(i).getCampos().get(i).getNombre());
+                    campo.setContenido(nuevoValor);
+                    //.modificarCampo(i, campo);
+                }
+            }
+            cam.cerrar();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        // TODO add your handling code here:
+        jTextField4.selectAll();
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tabla_registros.getModel();
+
+        String s;
+
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            Registro aux = new Registro();
+            aux.setCampos(llenarCampos());
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
+                s = (String) modelo.getValueAt(i, j);
+                aux.getCampos().get(j).setContenido(s);
+
+            }
+            registros.add(aux);
+
+        }
+        for (int i = 0; i < registros.size(); i++) {
+            arbol.insertar(registros.get(i).getIndice());
+        }
+
+        JOptionPane.showMessageDialog(null, "Se agrego exitosamente!");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tabla_registros.getSelectedRow();
+        tabla_registros.remove(selectedRow);
+        if (!registros.isEmpty()) {
+            registros.remove(selectedRow);
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tabla_registros.getModel();
+        Object[] row = {};
+        modelo.addRow(row);
+        tabla_registros.setModel(modelo);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1998,6 +2133,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2010,6 +2146,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2040,6 +2177,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -2058,9 +2197,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTabbedPane jTabbedPane6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JDialog jd_campos;
     private javax.swing.JDialog jd_estandarizacion;
     private javax.swing.JDialog jd_indices;
@@ -2092,6 +2233,8 @@ public class Main extends javax.swing.JFrame {
     String metadata = "";
     Raiz arbol = new Raiz(6);
     Boolean cargado=false;
+    File fileGlobal;
+    String campoGlobal;
 
     public void crearArbol(ArrayList<Integer> a) {
         arbol = new Raiz(6);

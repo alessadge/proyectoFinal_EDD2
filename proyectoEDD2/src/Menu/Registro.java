@@ -58,7 +58,7 @@ public class Registro {
 
     @Override
     public String toString() {
-        return campos.get(0).getNombre()+campos.get(0).getNombre();
+        return campos.get(0).getContenido();
     }
     
     public int getTamano() {

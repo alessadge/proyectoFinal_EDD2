@@ -10,7 +10,7 @@ public class AccesoCampo {
     
     private static RandomAccessFile flujo;
     private static int numeroRegistros;
-    private static int tamanoRegistro = 80;
+    static int tamanoRegistro = 80;
     int tamCampo;
     int tamRegistro;
     private static ArrayList<String> nombresCampos = new ArrayList();
@@ -24,7 +24,7 @@ public class AccesoCampo {
                 (double) flujo.length() / (double) tamanoRegistro);
     }
 
-    public static void cerrar() throws IOException {
+    public  void cerrar() throws IOException {
         flujo.close();
     }
     
@@ -147,28 +147,33 @@ public class AccesoCampo {
         return temporal;
     }
     
-    public  Registro devolverRegistro(int x) throws IOException{
+    public Registro devolverRegistro(int x) throws IOException{
         Registro registro=null;
-        registro.setCampos(new ArrayList());
+        ArrayList<Campo> nada = new ArrayList();
+        //registro.setCampos(nada);
         if (tamCampo == 0) {
             System.out.println("Tiene que cargar primero");
         }else{
             int posicion = tamCampo+3+x;
-            flujo.seek(posicion);
+
             for (int i = 0; i < tamCampo; i++) {
-                registro.getCampos().add(getCampo(posicion));
-                registro.getCampos().get(i).setNombre(nombresCampos.get(i));
+                flujo.seek(posicion);
+                Campo campo = new Campo();
+                campo.setContenido(flujo.readUTF());
+                campo.setNombre(nombresCampos.get(i));
+                registro.getCampos().add(campo);
                 posicion++;
             }
         }
         return registro;
     }
+    
    
     public  void modificarRegistro(int x,Registro temp) throws IOException{
         if (tamCampo == 0) {
             System.out.println("Tiene que cargar primero");
         }else{
-            int posicion = (tamCampo+3+x)*tamanoRegistro;
+            int posicion = (x)*tamanoRegistro;
             flujo.seek(posicion);
             for (int i = 0; i < tamCampo; i++) {
                 for (int j = 0; j < tamanoRegistro; j++) {
@@ -178,6 +183,19 @@ public class AccesoCampo {
                 setCampoRegistro(posicion,temp.getCampos().get(i));
                 posicion++;
             }
+        }
+    }
+    public void modificarCampo(int x,String temp) throws IOException{
+        if (tamCampo == 0) {
+            System.out.println("Tiene que cargar primero");
+        }else{
+            int posicion = (x)*tamanoRegistro;
+                for (int j = 0; j < tamanoRegistro; j++) {
+                    flujo.seek(posicion+j);
+                    flujo.writeUTF("");
+                }          
+            flujo.seek(posicion);
+            flujo.writeUTF(temp);
         }
     }
     
@@ -221,7 +239,7 @@ public class AccesoCampo {
         }
     }
     
-    public static boolean setCampoRegistro(int i, Campo campo) throws IOException {
+    public boolean setCampoRegistro(int i, Campo campo) throws IOException {
         if(i >= 0 && i <= getNumeroRegistros()) {
             if(campo.getTamano() > tamanoRegistro) {
                 System.out.println("\nTamaño de registro excedido.");
