@@ -198,6 +198,7 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel20 = new javax.swing.JPanel();
         jButton222Re = new javax.swing.JButton();
+        jB_tree = new javax.swing.JButton();
         panel_estandarizacion = new javax.swing.JPanel();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
@@ -673,21 +674,32 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jB_tree.setText("Imprimir arbol");
+        jB_tree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_treeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jButton222Re)
-                .addContainerGap(452, Short.MAX_VALUE))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jB_tree)
+                    .addComponent(jButton222Re))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jButton222Re)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jB_tree)
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Indexar", jPanel20);
@@ -2182,6 +2194,13 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButt98ActionPerformed
 
+    private void jB_treeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_treeActionPerformed
+        // TODO add your handling code here:
+        System.out.println(arbol.llamarRecorrer());
+           
+       
+    }//GEN-LAST:event_jB_treeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2226,6 +2245,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDialog cargar;
     private javax.swing.JComboBox<Campo> cb_addCampos;
     private javax.swing.JComboBox<Campo> cb_camposCruzar;
+    private javax.swing.JButton jB_tree;
     private javax.swing.JButton jButt98;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
