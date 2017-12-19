@@ -680,16 +680,16 @@ public class Main extends javax.swing.JFrame {
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGap(140, 140, 140)
+                .addGap(23, 23, 23)
                 .addComponent(jButton222Re)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(452, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(25, 25, 25)
                 .addComponent(jButton222Re)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Indexar", jPanel20);
@@ -2183,11 +2183,15 @@ public class Main extends javax.swing.JFrame {
 
 
     private void jButton222ReActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton222ReActionPerformed
+
         // TODO add your handling code here:
         //mandas el arreglo de registros ya con los indices puestos
-        ArrayList<Integer> temp = crearIndices(registros);
-        crearArbol(temp);
-
+        if(registros.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Tiene que cargar o tener registros para poder Generar su Arbol B de Indices");
+        } else{
+            ArrayList<Integer> temp = crearIndices(registros);
+            crearArbol(temp);
+        }
     }//GEN-LAST:event_jButton222ReActionPerformed
 
 
@@ -2382,7 +2386,7 @@ public class Main extends javax.swing.JFrame {
     public ArrayList<Integer> crearIndices(ArrayList<Registro> a) {
         ArrayList<Integer> ret = new ArrayList();
         for (int i = 0; i < a.size(); i++) {
-            ret.add(a.get(i).getIndice());
+            ret.add(i);
         }
         return ret;
     }
