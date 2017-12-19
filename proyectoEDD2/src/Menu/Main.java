@@ -261,6 +261,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jButton29 = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
+        jButt98 = new javax.swing.JButton();
         Tab_principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -1272,6 +1273,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButt98.setText("Actualizar");
+        jButt98.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButt98ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_cruzarLayout = new javax.swing.GroupLayout(panel_cruzar);
         panel_cruzar.setLayout(panel_cruzarLayout);
         panel_cruzarLayout.setHorizontalGroup(
@@ -1291,7 +1299,10 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(cb_camposCruzar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton29)))
+                            .addGroup(panel_cruzarLayout.createSequentialGroup()
+                                .addComponent(jButton29)
+                                .addGap(29, 29, 29)
+                                .addComponent(jButt98))))
                     .addGroup(panel_cruzarLayout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1315,7 +1326,8 @@ public class Main extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(panel_cruzarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton21)
-                    .addComponent(jButton29))
+                    .addComponent(jButton29)
+                    .addComponent(jButt98))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -1959,9 +1971,9 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton24ActionPerformed
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                         
+    }
     private void modificarCampoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_modificarCampoFocusGained
         // TODO add your handling code here:
         modificarCampo.selectAll();
@@ -2037,7 +2049,7 @@ public class Main extends javax.swing.JFrame {
 
             campos2 = cam.leerCampos();
             registros2 = cam.leerRegistros();
-   
+
             JPanel p = new JPanel();
 
             p = jPanel2;
@@ -2061,66 +2073,83 @@ public class Main extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButton20ActionPerformed
-
+    
+    DefaultComboBoxModel modelo2X = new DefaultComboBoxModel();
+       
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        //DefaultComboBoxModel modelo = new DefaultComboBoxModel();
 
-        modelo.addElement(cb_addCampos.getSelectedItem());
+        /*modelo.addElement(cb_addCampos.getSelectedItem());
 
         cb_camposCruzar.setModel(modelo);
+        */
+        
+        Campo aux = new Campo();
+        
+        aux = (Campo) cb_addCampos.getSelectedItem();
+        
+        
+        modelo2X.addElement(aux);
+        
+        
 
     }//GEN-LAST:event_jButton21ActionPerformed
 
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {
         cb_camposCruzar.remove((int) cb_camposCruzar.getSelectedItem());
-    }                                         
+    }
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        
         if (registros2.size() == registros.size()) {
-            
+
             for (int i = 0; i < campos.size(); i++) {
                 campos3.add(campos.get(i));
             }
 
-            for (int i = 0; i < campos2.size(); i++) {
+            /*for (int i = 0; i < campos2.size(); i++) {
                 campos3.add(campos2.get(i));
-            }
+            }*/
             
+            //
+        
+            for (int i = 0; i <cb_camposCruzar.getItemCount(); i++) {
+               campos3.add(cb_camposCruzar.getItemAt(i));
+            
+            }
+        
+            //
+        
+
             System.out.println("CAmpos en campos3");
             System.out.println("----------------------------------------------------------");
-           
-                   
+
             for (int i = 0; i < campos3.size(); i++) {
                 System.out.println(campos3.get(i).getNombre());
             }
             System.out.println("---------------------------------------------------------");
-            
-            int acum1=0;
-            int acum2=0;
-            
-            for (int i = 0; i < registros.size(); i++) {    
+
+            int acum1 = 0;
+            int acum2 = 0;
+
+            for (int i = 0; i < registros.size(); i++) {
                 Registro auxR = new Registro();
                 auxR.setCampos(campos3);
                 for (int j = 0; j < campos3.size(); j++) {
-                    if(j<campos.size()){
+                    if (j < campos.size()) {
                         auxR.getCampos().get(j).setContenido(registros.get(i).getCampos().get(acum1).getContenido());
                         acum1++;
-                    } else{
+                    } else {
                         auxR.getCampos().get(j).setContenido(registros2.get(i).getCampos().get(acum2).getContenido());
                         acum2++;
                     }
                 }
-                acum1=0;
-                acum2=0;
+                acum1 = 0;
+                acum2 = 0;
                 registros3.add(auxR);
             }
- 
-            System.out.println(registros3.get(0).getCampos().get(0).getContenido());
-            System.out.println(registros3.get(0).getCampos().get(1).getContenido());
-            System.out.println(registros3.get(0).getCampos().get(2).getContenido());
-            System.out.println(registros3.get(0).getCampos().get(3).getContenido());
 
-            System.out.println("--------------------------------------");
+
             AccesoCampo cam = new AccesoCampo();
             File archive;
             try {
@@ -2152,23 +2181,30 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton28ActionPerformed
 
-    //Indixar
+
     private void jButton222ReActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton222ReActionPerformed
         // TODO add your handling code here:
         //mandas el arreglo de registros ya con los indices puestos
-        ArrayList<Integer>temp = crearIndices(registros);
+        ArrayList<Integer> temp = crearIndices(registros);
         crearArbol(temp);
-          
+
     }//GEN-LAST:event_jButton222ReActionPerformed
 
-    
-    //re indexar
+
     private void jButton27REActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27REActionPerformed
-        // TODO add your handling code here:
-        //mandale el arreglo de registros ya con los nuevos indices
-        ArrayList<Integer>temp = crearIndices(registros);
-        crearArbol(temp);
+        DefaultComboBoxModel m = (DefaultComboBoxModel)cb_camposCruzar.getModel();
+        
+        m.removeElementAt(cb_camposCruzar.getSelectedIndex());
+        
+        cb_camposCruzar.setModel(m);
+      
+
     }//GEN-LAST:event_jButton27REActionPerformed
+
+    private void jButt98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButt98ActionPerformed
+        cb_camposCruzar.setModel(modelo2X);
+
+    }//GEN-LAST:event_jButt98ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2212,8 +2248,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JRadioButton bttn_2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JDialog cargar;
-    private javax.swing.JComboBox<String> cb_addCampos;
-    private javax.swing.JComboBox<String> cb_camposCruzar;
+    private javax.swing.JComboBox<Campo> cb_addCampos;
+    private javax.swing.JComboBox<Campo> cb_camposCruzar;
+    private javax.swing.JButton jButt98;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
