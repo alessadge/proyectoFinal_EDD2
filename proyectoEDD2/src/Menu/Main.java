@@ -198,8 +198,6 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel20 = new javax.swing.JPanel();
         jButton222Re = new javax.swing.JButton();
-        jPanel21 = new javax.swing.JPanel();
-        jButton27RE = new javax.swing.JButton();
         panel_estandarizacion = new javax.swing.JPanel();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
@@ -693,32 +691,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         jTabbedPane5.addTab("Indexar", jPanel20);
-
-        jButton27RE.setText("Re Indexar");
-        jButton27RE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton27REActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jButton27RE)
-                .addContainerGap(385, Short.MAX_VALUE))
-        );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jButton27RE)
-                .addContainerGap(238, Short.MAX_VALUE))
-        );
-
-        jTabbedPane5.addTab("Re Indexar", jPanel21);
 
         javax.swing.GroupLayout panel_indicesLayout = new javax.swing.GroupLayout(panel_indices);
         panel_indices.setLayout(panel_indicesLayout);
@@ -2274,7 +2246,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27RE;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
@@ -2317,7 +2288,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
